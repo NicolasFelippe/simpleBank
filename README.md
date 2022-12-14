@@ -26,4 +26,8 @@
 
 # Create Model Sqlc
 
-1. 
+
+# Mock
+ 1. go install github.com/golang/mock/mockgen@v1.6.0
+ 2. go get github.com/golang/mock/ 
+ 3. mockgen -destination db/mock/store.go  github.com/nicolasfelippe/simplebank/db/sqlc Store

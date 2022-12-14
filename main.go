@@ -10,7 +10,7 @@ import (
 	"github.com/nicolasfelippe/simplebank/util"
 )
 
-func main(){
+func main() {
 	config, err := util.LoadConfig(".")
 	if err != nil {
 		log.Fatal("cannot load config env:", err)
@@ -23,7 +23,7 @@ func main(){
 	store := db.NewStore(conn)
 	server := api.NewServer(store)
 
-	err =server.Start(config.ServerAddress)
+	err = server.Start(config.ServerAddress)
 	if err != nil {
 		log.Fatal("cannot start server", err)
 	}
