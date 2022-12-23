@@ -1,11 +1,23 @@
 package util
 
-import "github.com/spf13/viper"
+import (
+	"time"
+
+	"github.com/spf13/viper"
+)
+
+const (
+	PASETO = "PASETO"
+	JWT = "JWT"
+)
 
 type Config struct {
 	DBDriver string `mapstructure:"DB_DRIVER"`
 	DBSource string `mapstructure:"DB_SOURCE"`
 	ServerAddress string `mapstructure:"SERVER_ADDRESS"`
+	TokenSymmectricKey string `mapstructure:"TOKEN_SYMMETRIC_KEY"`
+	AccessTokenDuration time.Duration `mapstructure:"ACCESS_TOKEN_DURATION"`
+	AuthType string `mapstructure:"AUTH_TYPE"`
 }
 
 func LoadConfig(path string) (config Config, err error){
