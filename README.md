@@ -35,6 +35,9 @@
 # Create Model Sqlc
 
 
+# Util
+1. openssl rand -hex 64 | head -c 32  // Generate random 32 bytes
+
 # Mock
  1. go install github.com/golang/mock/mockgen@v1.6.0
  2. go get github.com/golang/mock/ 
