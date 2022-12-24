@@ -17,6 +17,14 @@
 3. Execute on cmd `make createdb` on root folder project
 4. Execute on cmd `make migrateup` on root folder project
 
+# Docker network
+1. docker network create bank-network 
+2. docker network connect bank-network postgres12
+
+## Docker Build
+1. docker build -t simplebank:latest .
+2. docker run --name simplebank --network bank-network -p 8080:8080 -e DB_SOURCE="postgresql://user:password@postgres12:5432/simple_bank?sslmode=disable" -e  GIN_MODE=release  simplebank:latest
+
 
 ## Configure Sqlc
 1. docker pull kjconroy/sqlc
