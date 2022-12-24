@@ -42,3 +42,10 @@
  1. go install github.com/golang/mock/mockgen@v1.6.0
  2. go get github.com/golang/mock/ 
  3. mockgen -destination db/mock/store.go  github.com/nicolasfelippe/simplebank/db/sqlc Store
+
+
+# AWS ECR DOCKER
+
+login:
+aws ecr get-login-password | docker login --username AWS --password-stdin "url ecr" example: 979387533035.dkr.ecr.us-east-1.amazonaws.com
+docker pull "uri image" // 979387533035.dkr.ecr.us-east-1.amazonaws.com/simplebank:ef283d7113863e10999ede32ba93d5ee99d92b94
