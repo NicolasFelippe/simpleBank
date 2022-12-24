@@ -1,6 +1,9 @@
 postgres:
 	docker run --name postgres12 --network bank-network -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=ORiBLEcTUrdS -d postgres:12-alpine
 
+dockerclear:
+	docker compose down && docker rmi simplebank_api
+
 createdb:
 	docker exec -it postgres12 createdb --username=root --owner=root simple_bank
 
@@ -32,4 +35,4 @@ mock:
 	mockgen -package mockdb  -destination db/mock/store.go  github.com/nicolasfelippe/simplebank/db/sqlc Store
 
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc server mock migrateup1 migratedown1
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc server mock migrateup1 migratedown1 dockerclear
