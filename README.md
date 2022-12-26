@@ -17,6 +17,19 @@
 3. Execute on cmd `make createdb` on root folder project
 4. Execute on cmd `make migrateup` on root folder project
 
+### Db docs
+
+1. Install node >= 16
+2. npm install -g dbdocs
+3. npm install -g @dbml/cli
+
+#### Commands
+
+You need file doc/db.dbml
+
+1. `make db_docs`
+2. `make db_schema`
+
 ## Migrate
 
 ```shell
