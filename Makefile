@@ -42,4 +42,16 @@ db_docs:
 db_schema:
 	dbml2sql --postgres -o doc/schema.sql doc/db.dbml
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc server mock migrateup1 migratedown1 dockerclear db_docs db_schema
+proto_win:
+	del /S /f /q pb\*
+	protoc --proto_path=proto --go_out=pb --go_opt=paths=source_relative \
+    --go-grpc_out=pb --go-grpc_opt=paths=source_relative \
+    proto/*.proto
+
+proto:
+	rm -f pb/*.go
+	protoc --proto_path=proto --go_out=pb --go_opt=paths=source_relative \
+    --go-grpc_out=pb --go-grpc_opt=paths=source_relative \
+    proto/*.proto
+
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc server mock migrateup1 migratedown1 dockerclear db_docs db_schema proto proto_win

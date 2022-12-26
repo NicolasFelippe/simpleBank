@@ -68,3 +68,10 @@ migrate create -ext sql -dir db/migration -seq <migration_name>
 login:
 aws ecr get-login-password | docker login --username AWS --password-stdin "url ecr" example: 979387533035.dkr.ecr.us-east-1.amazonaws.com
 docker pull "uri image" // 979387533035.dkr.ecr.us-east-1.amazonaws.com/simplebank:ef283d7113863e10999ede32ba93d5ee99d92b94
+
+
+## GRPC - Windows
+
+1. choco install protoc
+2. go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
+3. go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28
