@@ -2,10 +2,10 @@
 
 ## Start
 
-1. Install scoop  https://scoop.sh/
+1. Install scoop  <https://scoop.sh/>
 2. Install Docker desktop
-3. Install chocolatey https://chocolatey.org/install
-4. Install migrate (https://github.com/golang-migrate/migrate/tree/master/cmd/migrate)
+3. Install chocolatey <https://chocolatey.org/install>
+4. Install migrate (<https://github.com/golang-migrate/migrate/tree/master/cmd/migrate>)
    1. `scoop install migrate`
 5. Install makefile
    1. `choco install make`
@@ -65,13 +65,23 @@ migrate create -ext sql -dir db/migration -seq <migration_name>
 
 ## AWS ECR DOCKER
 
-login:
-aws ecr get-login-password | docker login --username AWS --password-stdin "url ecr" example: 979387533035.dkr.ecr.us-east-1.amazonaws.com
-docker pull "uri image" // 979387533035.dkr.ecr.us-east-1.amazonaws.com/simplebank:ef283d7113863e10999ede32ba93d5ee99d92b94
-
+- login:
+`aws ecr get-login-password | docker login --username AWS --password-stdin <url ecr>` example: 979387533035.dkr.ecr.us-east-1.amazonaws.com
+`docker pull <uri image>` // 979387533035.dkr.ecr.us-east-1.amazonaws.com/simplebank:ef283d7113863e10999ede32ba93d5ee99d92b94
 
 ## GRPC - Windows
 
 1. choco install protoc
 2. go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
 3. go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28
+4. Download and install `https://github.com/ktr0731/evans#installation` // Copy binary and inject path on variables system
+
+5. ```shell
+   go install \
+    github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
+    github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2 \
+    google.golang.org/protobuf/cmd/protoc-gen-go \
+    google.golang.org/grpc/cmd/protoc-gen-go-grpc
+    ```
+
+6. `go install github.com/rakyll/statik`
