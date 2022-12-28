@@ -8,6 +8,7 @@ import (
 	"github.com/nicolasfelippe/simplebank/pb"
 	"github.com/nicolasfelippe/simplebank/token"
 	"github.com/nicolasfelippe/simplebank/util"
+	"github.com/nicolasfelippe/simplebank/worker"
 )
 
 type Server struct {
@@ -16,9 +17,10 @@ type Server struct {
 	store      db.Store
 	tokenMaker token.Maker
 	router     *gin.Engine
+	taskDistributor worker.TaskDistributor
 }
 
-func NewServer(config util.Config, store db.Store) (*Server, error) {
+func NewServer(config util.Config, store db.Store, taskDistributor worker.TaskDistributor) (*Server, error) {
 	tokenMaker, err := setupMaker(config)
 	if err != nil {
 		return nil, fmt.Errorf("cannot create token maker: %w", err)
@@ -28,6 +30,7 @@ func NewServer(config util.Config, store db.Store) (*Server, error) {
 		config:     config,
 		tokenMaker: tokenMaker,
 		store:      store,
+		taskDistributor: taskDistributor,
 	}
 
 	return server, nil

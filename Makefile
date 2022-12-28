@@ -65,4 +65,10 @@ proto:
 evans:
 	evans --host localhost --port 9090 -r repl
 
-.PHONY: postgres evans createdb dropdb migrateup migratedown sqlc server mock migrateup1 migratedown1 dockerclear db_docs db_schema proto proto_win
+redis:
+	docker run --name redis -p 6379:6379 -d redis:7-alpine
+
+redis_ping:
+	docker exec -it redis redis-cli ping
+
+.PHONY: postgres redis redis_ping evans createdb dropdb migrateup migratedown sqlc server mock migrateup1 migratedown1 dockerclear db_docs db_schema proto proto_win
